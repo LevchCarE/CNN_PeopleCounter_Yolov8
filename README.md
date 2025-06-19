@@ -1,80 +1,48 @@
-# Real-Time People Counting System with YOLOv8 and OpenCV
+This repository provides a real-time system for counting people using YOLOv8 and OpenCV. The solution leverages YOLOv8 — a cutting-edge object detection model — to identify people in both images and videos. Additionally, a custom class is included for people detection without depending on YOLOv8. You can use other yolo versions according to ultralytics documentations. If you are using a web camara, please set cap=cv2.VideoCapture(0).
 
-![People Counting](https://github.com/epcm18/PeopleCounting-ComputerVision/assets/104779449/9b33bba6-c9ce-4144-b90d-3e294a655b96)
+Overview
+This project aims to detect and count people in real-time from images or video streams. YOLOv8 (short for "You Only Look Once, version 8") is an advanced object detection model capable of recognizing multiple objects within an image simultaneously. The system integrates YOLOv8 with OpenCV for live, real-time detection.
 
-This repository contains the code for a real-time people-counting system using YOLOv8 and OpenCV. The system utilizes YOLOv8, a state-of-the-art object detection algorithm, to detect people in images and videos. Additionally, it includes a custom class that can be used for detecting people without relying on YOLOv8.
+Installation
+To get started with the system:
 
-## Table of Contents
+Clone the repository:
 
-- [Introduction](#introduction)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Custom People Detection](#custom-people-detection)
-- [Contributing](#contributing)
-- [License](#license)
+git clone https://github.com/epcm18/PeopleCounting-ComputerVision.git
 
-## Introduction
+Set up your environment and install the dependencies (a virtual environment is recommended):
 
-The real-time people-counting system is designed to detect and count the number of people present in images or live video streams. YOLOv8, which stands for "You Only Look Once version 8," is a deep learning-based object detection model that can recognize multiple objects in an image simultaneously. This system utilizes YOLOv8 as the core object detection algorithm and integrates it with OpenCV to achieve real-time detection.
+python -m venv venv
+source venv/bin/activate # On Windows: venv\Scripts\activate
 
-## Installation
+Then install the necessary packages:
 
-To use the real-time people counting system, follow these steps to set up the environment:
+pip install -r requirements.txt
 
-1. Clone this GitHub repository to your local machine:
+How to Use
+You can use this system to detect individuals in a video feed and display a live count of detected people.
 
-   `git clone https://github.com/epcm18/PeopleCounting-ComputerVision.git`
+Running the Application
+Start the people counting system with this command:
 
-2. Install the required dependencies. It is recommended to create a virtual environment before installing the dependencies:
+python counting.py
 
-   `python -m venv venv`
-   `source venv/bin/activate`  # On Windows, use `venv\Scripts\activate`
+By default, this will activate your webcam, process the live feed, and display the results in real-time — including bounding boxes around detected individuals and an on-screen count.
 
-   Install dependencies:
+Controls
+Press 'Esc' to exit the application.
 
-   `pip install -r requirements.txt`
+Custom Detection Module
+In addition to YOLOv8, the project provides a custom detection class found in custom_people_detection.py.
 
-## Usage
+To use this class:
 
-This we can use to detect people in a camera frame and also get a count of people who are present on the screen now.
+Import it into your script:
 
-### Running the People Counting System
+from Person import Myperson
 
-To run the real-time people counting system using YOLOv8 and OpenCV, execute the following command:
+Create an instance:
 
-`python countingYolov8.py`
+people_detector = Myperson()
 
-This will start the application, and it will use your webcam by default to capture live video and count the number of people in the frames. The processed video with bounding boxes around detected people and the count will be displayed in real-time.
-
-### Keyboard Shortcuts
-
-- **'Esc'**: Quit the application.
-
-## Custom People Detection
-
-Apart from using YOLOv8, this repository also includes a custom class for detecting people. The custom people detection class can be found in `custom_people_detection.py`.
-
-To use the custom people detection class, follow these steps:
-
-1. Import the class in your script:
-
-   `from Person import Myperson`
-
-2. Create an instance of the `Myperson` class:
-
-   `people_detector = Myperson()`
-
-4. To detect multiple people going with each other import `ManyPeople` class
-
-## Contributing
-
-Contributions to this real-time people counting system are welcome. If you have any ideas, bug fixes, or improvements, please open an issue or submit a pull request.
-
-When contributing to this repository, please first discuss the changes you wish to make by opening an issue.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-
-
+If you need to track multiple people walking together, import the ManyPeople class.
