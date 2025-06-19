@@ -6,21 +6,16 @@ This project aims to detect and count people in real-time from images or video s
 Installation
 To get started with the system:
 
-Clone the repository:
+1. Clone the repository using git clone
 
-git clone https://github.com/epcm18/PeopleCounting-ComputerVision.git
+2. Set up your environment and install the dependencies (a virtual environment is recommended):
+-python -m venv venv
+-source venv/bin/activate # On Windows: venv\Scripts\activate
 
-Set up your environment and install the dependencies (a virtual environment is recommended):
-
-python -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
-
-Then install the necessary packages:
-
-pip install -r requirements.txt
-
-How to Use
-You can use this system to detect individuals in a video feed and display a live count of detected people.
+3.Then install the necessary packages:
+-ultralytics
+-opencv
+-cvzone
 
 Running the Application
 Start the people counting system with this command:
@@ -31,18 +26,3 @@ By default, this will activate your webcam, process the live feed, and display t
 
 Controls
 Press 'Esc' to exit the application.
-
-Custom Detection Module
-In addition to YOLOv8, the project provides a custom detection class found in custom_people_detection.py.
-
-To use this class:
-
-Import it into your script:
-
-from Person import Myperson
-
-Create an instance:
-
-people_detector = Myperson()
-
-If you need to track multiple people walking together, import the ManyPeople class.
